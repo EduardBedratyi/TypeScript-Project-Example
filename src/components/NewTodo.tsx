@@ -1,16 +1,18 @@
 import React, { useRef } from 'react';
 
-const NewTodo = () => {
+const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = (props) => {
   const todoTextInputRef = useRef<HTMLInputElement>(null);
   const submitHandler = (event: React.FormEvent) => {
     event.preventDefault();
 
-    //"!" says that I`m certain here I won`t de dealing with null
+    //"!" says that I`m certain here I won`t be dealing with null
     const enteredText = todoTextInputRef.current!.value;
     if (enteredText.trim().length === 0) {
       //throw an error
       return;
     }
+
+    props.onAddTodo(enteredText);
   };
   return (
     <form onSubmit={submitHandler}>
