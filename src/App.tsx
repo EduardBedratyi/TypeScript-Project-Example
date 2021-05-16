@@ -1,13 +1,26 @@
+import { useState } from 'react';
 import { Todos } from './components/Todos';
 import { dummyList } from './__mocks__/dummyData.js';
 import { Todo } from './components/models/todo';
+import { NewTodo } from './components/NewTodo';
 import './App.css';
 
 function App() {
-  const todos = [new Todo('Third Entry'), new Todo('Fourth Entry')];
+  const oldTodos = [new Todo('Third Entry'), new Todo('Fourth Entry')];
+
+  const [todos, setTodos] = useState<Todo[]>(oldTodos);
+
+  const addTodoHandler = (todoText: string) => {
+    const newTodo = new Todo(todoText);
+
+    setTodos((prevTodos) => {
+      return prevTodos.concat(newTodo);
+    });
+  };
   return (
     <div className='App'>
       {/* <Todos items={dummyList}/> */}
+      <NewTodo onAddTodo={addTodoHandler} />
       <Todos items={todos} />
     </div>
   );
