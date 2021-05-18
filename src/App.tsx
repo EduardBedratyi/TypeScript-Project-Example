@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Todos } from './components/Todos';
 import { dummyList } from './__mocks__/dummyData.js';
-import { Todo } from './components/models/todo';
+import { Todo } from './models/todo';
 import { NewTodo } from './components/NewTodo';
 import './App.css';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Todo } from '../components/models/todo';
+import { Todo } from '../models/todo';
 import { TodoItem } from './TodoItem';
 import classes from './Todos.module.css';
 
